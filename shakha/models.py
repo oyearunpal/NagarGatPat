@@ -43,7 +43,7 @@ class Swaymsevak(models.Model):
     fname=models.CharField("first name",max_length=20)			
     mname = models.CharField("middle name", max_length=20,blank=True,null=True)
     lname = models.CharField("Last name", max_length=20)
-    shakha=models.ForeignKey(Shakha,default=3)
+    shakha=models.ForeignKey(Shakha,default=1)
     creted = models.DateField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
@@ -82,7 +82,7 @@ class  Spersonal(models.Model):
 @python_2_unicode_compatible  # only if you need to support Python 2
 class Gat(models.Model):
 	name=models.CharField(max_length=30)
-	shakha=models.ForeignKey(Shakha,default=3)
+	shakha=models.ForeignKey(Shakha,default=1)
 
 	gatnayak= models.OneToOneField(
         Swaymsevak,
@@ -127,7 +127,7 @@ class Sshakha(models.Model):
 		('11','Palak'),
 		)
 	jimmedari = models.CharField(max_length=2, choices=Jimmedari_Choices,default='1')
-	gat=models.ForeignKey(Gat,on_delete=models.CASCADE,default=7)
+	gat=models.ForeignKey(Gat,on_delete=models.CASCADE,default=1)
 	topi = models.BooleanField(choices=Bool_Choice,default=False)
 	shirt = models.BooleanField(choices=Bool_Choice,default=False)
 	pant = models.BooleanField(choices=Bool_Choice,default=False)
@@ -142,7 +142,7 @@ class Sshakha(models.Model):
 		('3','Shishu'),
 		('4','Praudh')
 		)
-	swaymsevak_type = models.CharField(max_length=1,choices=Type_Choices,blank=True,null=True,default='2') 
+	swaymsevak_type = models.CharField(max_length=1,choices=Type_Choices,blank=True,null=True,default='1') 
 	def sangh_aayu(self):
 		if self.dob :
 			today = date.today()
@@ -170,7 +170,7 @@ class Ghosh(models.Model):
 		('a','Anak'),
 		)
 	ghosh = models.CharField(max_length=1, choices=Ghosh_Choices,default='v')
-	rachna = models.IntegerField("No. of Rachnas",default=1)
+	rachna = models.IntegerField("No. of Rachnas",default=0)
 	def __str__(self):
 		return self.name.fname+" "+self.name.mname+" "+self.name.lname
 
