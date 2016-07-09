@@ -1,0 +1,23 @@
+{% extends "shakha/base.html" %}
+{% block content %}
+{% if shakha_list %}
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    {% for s in shakha_list %}
+
+		<div class="card card-block" style="width: 18rem;">
+		  <h3 class="card-title">{{s.name}}</h3>
+		  <p class="card-text">Time: {{s.time}} {{s.get_Shakha_type_display}}</p>
+<p class="card-text">Location : {{s.location}}</p>
+		  <a href="{% url 'detail' s.id %}" class="btn btn-primary">Go for details</a>
+		</div>
+	{% endfor %}
+
+  </div>
+</div>
+
+ {% else %}
+        <p>No Shakha list is available</p>
+{% endif %}	
+    
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "shakha/base.html" %}
+{% block content %}                      
+<div class="row">
+
+                <div class="col-lg-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        Ghosh Swaymsevak
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Vadan</th>
+                                            <th>Rachna</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+{% for s in swaymsevak_ghosh %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td><a href="{% url "admin:shakha_swaymsevak_change" s.name.id  %}" target="_blank"> {{s.name}}</a></td>
+        <td>{{s.get_ghosh_display}}</td>
+        <td>{{s.rachna}}</td>
+    </tr>
+{% endfor %}
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+{% endblock content %}

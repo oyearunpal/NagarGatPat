@@ -1,0 +1,172 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Umamaheswarin Nagar{% endblock %}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'shakha/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'shakha/full-slider.css' %}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'shakha/bower_components/morrisjs/morris.css' %}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}">Uma Maheswari Nagar</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container" style="padding-top:50px">
+        <div class="row">
+            <div class="panel-heading  ">
+                <h1>Swaymsevak In Shakha</h1>
+            </div>
+        </div>
+        <div id="chart" style="height: 400px;"></div>
+
+        <div class="panel panel-default col-lg-6">
+            <div class="panel-heading"><b>Shakha Details:</b></div>
+            <div class="panel-body">
+                <ul class="list-group">
+                  {% for s in shakha_swaymsevak_count %}
+<li class="list-group-item"><span class="badge">{{s.swaymsevak__count}}</span><b>{{s.name}} 
+                            {% ifnotequal s.days '7'  %}
+                                Milan
+
+                                {% else %}
+                                Shakha
+                        
+                            {% endifnotequal %}
+
+                       
+                     </b> {{s.time}} {{s.get_days_display}},{{s.location}} </li>
+{% endfor %}
+
+                
+                </ul>
+            </div>
+        </div>
+
+ <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bell fa-fw"></i> Upcoming Birthdays
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="list-group">
+                    {% for swaymsevak in birthday_next_10days %}
+                    <p class="list-group-item">
+                                     <a href="{% url "admin:shakha_swaymsevak_change" swaymsevak.id  %}" target="_blank">{{swaymsevak}}</a>
+                                    <span class="pull-right text-muted small"><em>{{swaymsevak.spersonal.dob}}</em>
+                                    </span>
+                                </p> {% endfor %}
+                </div>
+                <!-- /.list-group -->
+                <p>Wish Happy Birthday <i class="fa fa-birthday-cake fa-fw"></i> to them</p>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+</div>
+
+<iframe src="https://calendar.google.com/calendar/embed?src=hdcjo77utgfaftnpuqg68oo8rk%40group.calendar.google.com&ctz=Asia/Calcutta" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <!-- /.row -->
+    <hr>
+    <!-- Footer -->
+    <footer class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Your Website 2016</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
+    </div>
+    <!-- /.container -->
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'shakha/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'shakha/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{% static 'shakha/bower_components/metisMenu/dist/metisMenu.min.js' %}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'shakha/dist/js/sb-admin-2.js' %}"></script>
+<!-- Morris Charts JavaScript -->
+    <script src="{% static "shakha/bower_components/raphael/raphael-min.js" %}"></script>
+    <script src="{% static "shakha/bower_components/morrisjs/morris.min.js" %}"></script>
+    <script src="{% static "shakha/js/morris-data.js" %}"></script>
+
+ <!-- Morris Charts JavaScript -->
+    <script src="{% static "shakha/bower_components/raphael/raphael-min.js" %}"></script>
+    <script src="{% static "shakha/bower_components/morrisjs/morris.min.js" %}"></script>
+   
+
+
+<!-- Flot Charts JavaScript -->
+    <script src="{% static "shakha/bower_components/flot/excanvas.min.js" %}"></script>
+    <script src="{% static "shakha/bower_components/flot/jquery.flot.js" %}"></script>
+    <script src="{% static "shakha/bower_components/flot/jquery.flot.pie.js" %}"></script>
+    <script src="{% static "shakha/bower_components/flot/jquery.flot.resize.js" %}"></script>
+    <script src="{% static "shakha/bower_components/flot/jquery.flot.time.js"  %}"></script>
+    <script src="{% static "shakha/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js" %}"></script>
+    
+
+<script type="text/javascript">
+
+new Morris.Donut({
+  element: 'chart',
+  data: 
+
+[{% for i in donut_value %}
+  { label: '{{i.label}}' , value:{{i.value}} },  
+{% endfor %}
+ ] ,
+});
+</script>
+
+
+</body>
+
+</html>

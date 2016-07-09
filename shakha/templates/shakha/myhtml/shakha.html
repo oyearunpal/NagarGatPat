@@ -1,0 +1,11 @@
+<h1>{{shakha.name}}</h1>
+<p>Time: {{shakha.time}} {{shakha.get_Shakha_type_display}}</p>
+<p>Location : {{shakha.location}}</p>
+Total : {{swaymsevak_list.count}}
+
+<h2>List of Swaymsevak</h2>
+{% for swaymsevak in swaymsevak_list %}
+	Name:{{swaymsevak.fname}} {{swaymsevak.lname}} 
+	<br><br>
+	
+{% endfor %}
