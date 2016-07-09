@@ -80,12 +80,14 @@ img.no-resize {
 
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
+   <!--
     {% if s.pic %}
     <img src= "{{ s.pic.url }}" alt="..." class="no-resize">
         {% else %}
          <img src= {% static "shakha/no-image.jpg" %}    alt="..." class="no-resize" height="242">
 
     {% endif %}
+      -->
       <div class="caption">
         <h3>{{s.name}} </h3>
             <p> {{s.time}} {{s.get_days_display}},{{s.location}}</p>
