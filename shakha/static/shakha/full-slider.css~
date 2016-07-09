@@ -10,12 +10,6 @@ body {
 
 }
 
-/*to remove url from print page */
-@media print {
-  a[href]:after {
-    content: none !important;
-  }
-}
 .carousel,
 .item,
 .active {

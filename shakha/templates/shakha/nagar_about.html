@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% if user.is_authenticated %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,3 +172,9 @@ new Morris.Donut({
 </body>
 
 </html>
+
+{% else %}
+<meta http-equiv="refresh" content="0; url={% url "admin:login" %}" />
+
+<h1>Log in first</h1>
+{% endif %}

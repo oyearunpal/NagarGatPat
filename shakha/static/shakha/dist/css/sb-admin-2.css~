@@ -7,12 +7,7 @@
 body {
     background-color: #f8f8f8;
 }
-/*to remove url from print page */
-@media print {
-  a[href]:after {
-    content: none !important;
-  }
-}
+
 #wrapper {
     width: 100%;
 }
