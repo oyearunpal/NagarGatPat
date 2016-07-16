@@ -5,10 +5,11 @@ from datetime import date
 from django.utils import timezone
 	
 from django.db import models
+from shakha.models import Swaymsevak
 # Create your models here.
 
 @python_2_unicode_compatible  # only if you need to support Python 2
-class book(models.Model):
+class Book(models.Model):
 	'''
 	Description : Details about books
 	'''
@@ -51,4 +52,20 @@ class book(models.Model):
 	cover_image = models.ImageField(upload_to='books/',blank=True,null=True)
 	def __str__(self):
 	    	return self.name
+
+
+@python_2_unicode_compatible  # only if you need to support Python 2
+class Issue_Book(models.Model):
+	'''
+	Description : All transaction's detail
+	'''
+	book=models.ForeignKey(Book);
+	swaymsevak=models.ForeignKey('shakha.Swaymsevak')
+	check_in = models.DateField(auto_now_add=True,editable=True)
+	# check_in.editable=True
+	check_out = models.DateTimeField(auto_now=True)
+	feedback = models.CharField(max_length=100, blank=True,null=True)
+	rate = models.PositiveSmallIntegerField("Rate out of Five",blank=True,null=True)
+	def __str__(self):
+		    	return self.swaymsevak
 

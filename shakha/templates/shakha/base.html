@@ -26,6 +26,8 @@
     <!-- Custom Fonts -->
     <link href="{% static 'shakha/bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
 
+    <!-- DataTables CSS -->
+    <link href="{% static 'shakha/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css' %}" rel="stylesheet">
 {% block headData %}
     
 {% endblock headData %}
@@ -138,7 +140,11 @@
     {% block scriptData %}
         
     {% endblock scriptData %}
-
+<!-- DataTables JavaScript -->
+    <script src="{% static 'shakha/bower_components/datatables/media/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'shakha/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'shakha/bower_components/datatables-responsive/js/dataTables.responsive.js' %}"></script>
+    
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'shakha/dist/js/sb-admin-2.js' %}"></script>
    <script type="text/javascript">

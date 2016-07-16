@@ -1,14 +1,4 @@
 {% extends "shakha/base.html" %}
-{% load staticfiles %}
-{% block headData %}
-    
-    <!-- DataTables CSS -->
-    <link href="{% static 'shakha/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css' %}" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
-    <link href="{% static 'shakha/bower_components/datatables-responsive/css/dataTables.responsive.css' %}" rel="stylesheet">
-
-{% endblock headData %}
 {% block content %}
 <div>
             <div class="row">
@@ -66,10 +56,6 @@
 
 {% block scriptData %}
   
-    <!-- DataTables JavaScript -->
-    <script src="{% static 'shakha/bower_components/datatables/media/js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'shakha/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js' %}"></script>
-<script src="{% static 'shakha/bower_components/datatables-responsive/js/dataTables.responsive.js' %}"></script>
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     $(document).ready(function() {
