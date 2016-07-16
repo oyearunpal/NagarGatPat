@@ -53,41 +53,26 @@ img.no-resize {
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="{% url "jholivachnalay" %}">झोलिवाचनालय</a>
+                    </li>
+
+                    
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
-<!--     <div class="container">
-    <div class="row " style="padding-top:80px margin:10px">
-        {% for s in shakha_list %}
-        <div class="col-sm-6 col-md-3 jumbotron vertical-center " style="height:300px; border:5px solid #f9f9f9; ">
-            <h3>{{s.name}} </h3>
-            <p> {{s.time}} {{s.get_days_display}},{{s.location}}</p>
-            <p>
-                <a href="{% url 'index' s.id %}" class="btn btn-primary btn-lg" role="button">View Details</a>
-            </p>
-        </div>
-        {% endfor %}
-    </div>
-</div>
- -->
+{% block startContent %}
+    
 <div style="margin-top:80px ">
 <div class="row" >
         {% for s in shakha_list %}
 
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-   <!--
-    {% if s.pic %}
-    <img src= "{{ s.pic.url }}" alt="..." class="no-resize">
-        {% else %}
-         <img src= {% static "shakha/no-image.jpg" %}    alt="..." class="no-resize" height="242">
-
-    {% endif %}
-      -->
       <div class="caption">
         <h3>{{s.name}} </h3>
             <p> {{s.time}} {{s.get_days_display}},{{s.location}}</p>
@@ -101,47 +86,12 @@ img.no-resize {
 
  </div>
 </div>
-
-
-    <!-- 
-    Full Page Image Background Carousel Header
-    <header id="myCarousel" class="carousel slide">
-        Indicators
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
-        Wrapper for Slides
-        <div class="carousel-inner">
-           {% for s in shakha_list %}
-            <div class="item {% if forloop.first %} active{% endif %}">
-                Set the first background image of size 1900 * 1080
-                <div class="fill" style="background-image:url('http://i.huffpost.com/gen/1794889/original.jpg');"></div>
-                <div class="carousel-caption">
-                    <a href="{% url 'index' s.id %}" class="btn btn-primary">{{s.name}}</a>
-                </div>
-            </div>   
-           {% endfor %}
-            
-        </div>
-
-        Controls
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </header>  -->
     <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h1>Shakha Management</h1>
-                <p>Know all about shakha in Uma Maheswari nagar</p>
+                <p>Know all about shakha in Uma Maheswar nagar</p>
             </div>
         </div>
         <hr>
@@ -157,6 +107,11 @@ img.no-resize {
     </div>
     <!-- /.container -->
     </div>
+
+
+{% endblock startContent %}
+
+
     <script type="text/javascript">
     $('.carousel').carousel();
     $('.carousel').carousel({

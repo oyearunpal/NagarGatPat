@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from shakha import views
+from shakha import views as shakha_views
+from library import views as library_views
 from django.conf import settings
 from django.conf.urls.static import static
 admin.autodiscover()
@@ -26,26 +27,28 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
     # ex: /
-    url(r'^$', views.home, name='home'),
+    url(r'^$', shakha_views.home, name='home'),
     # ex: /about/
-    url(r'^about/', views.nagar_about, name='nagar_about'),
+    url(r'^about/', shakha_views.nagar_about, name='nagar_about'),
     # ex: /shakha/5/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/$', views.index, name='index'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/$', shakha_views.index, name='index'),
     # ex: /shakha/5/swaymsevak/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/swaymsevak/$', views.shakha_swaymsevak, name='shakha_swaymsevak'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/swaymsevak/$', shakha_views.shakha_swaymsevak, name='shakha_swaymsevak'),
         # ex: /shakha/5/ganvesh/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/ganvesh/$', views.shakha_ganvesh, name='shakha_ganvesh'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/ganvesh/$', shakha_views.shakha_ganvesh, name='shakha_ganvesh'),
         # ex: /shakha/5/shikshit/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/shikshit/$', views.shakha_shikshit, name='shakha_shikshit'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/shikshit/$', shakha_views.shakha_shikshit, name='shakha_shikshit'),
         # ex: /shakha/5/ghosh/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/ghosh/$', views.shakha_ghosh, name='shakha_ghosh'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/ghosh/$', shakha_views.shakha_ghosh, name='shakha_ghosh'),
         # ex: /shakha/5/gat/
-    url(r'^shakha/(?P<shakha_id>[0-9]+)/gat/$', views.shakha_gat, name='shakha_gat'),
+    url(r'^shakha/(?P<shakha_id>[0-9]+)/gat/$', shakha_views.shakha_gat, name='shakha_gat'),
         # ex: /shakha/5/sankhya/
     # url(r'^shakha/(?P<shakha_id>[0-9]+)/sankhya/$', views.shakha_sankhya, name='shakha_sankhya'),
+    url(r'^jholivachnalay/', library_views.jholivachnalay, name='jholivachnalay'),
+
 
     # ex: /swaymsevak/5/
-    url(r'^swaymsevak/(?P<shakha_id>[0-9]+)/$', views.swaymsevak_detail, name='swaymsevak_detail'),
+    # url(r'^swaymsevak/(?P<shakha_id>[0-9]+)/$', views.swaymsevak_detail, name='swaymsevak_detail'),
 
 ]
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
