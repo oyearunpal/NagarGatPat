@@ -36,6 +36,11 @@ def nagar_about(request):
 	return render(request, 'shakha/nagar_about.html',{
 	'donut_value':donut_value,'shakha_swaymsevak_count':shakha_swaymsevak_count,'birthday_next_10days':birthday_next_10days,
 			})
+def tarun_contact(request):
+	swaymsevak_list = Swaymsevak.objects.all()
+	swaymsevak_list_tarun=swaymsevak_list.filter(sshakha__swaymsevak_type='2').values("fname","mname","lname","spersonal__contact","spersonal__emailid")
+	return render(request,'shakha/nagar_query.html',{'result':swaymsevak_list_tarun})
+
 
 
 def index(request, shakha_id):

@@ -131,6 +131,7 @@ class Sshakha(models.Model):
 	topi = models.BooleanField(choices=Bool_Choice,default=False)
 	shirt = models.BooleanField(choices=Bool_Choice,default=False)
 	pant = models.BooleanField(choices=Bool_Choice,default=False)
+	belt = models.BooleanField(choices=Bool_Choice,default=False)
 	shocks = models.BooleanField(choices=Bool_Choice,default=False)
 	shoes = models.BooleanField(choices=Bool_Choice,default=False)
 	dand = models.BooleanField(choices=Bool_Choice,default=False)

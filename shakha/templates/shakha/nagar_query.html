@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+
+<!DOCTYPE html>
+<!-- currently writing for only to get contact -->
+<html lang="en">
+{% for i in result %}
+	<pre>{{forloop.counter}}.{{i.fname}} {{i.mname}} {{i.lname}}    {{i.spersonal__contact}}    {{i.spersonal__emailid}}</pre>
+{% endfor %}
+{%else%}
+<p>please login</p>
+{% endif  %}

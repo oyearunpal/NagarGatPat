@@ -30,6 +30,9 @@ urlpatterns = [
     url(r'^$', shakha_views.home, name='home'),
     # ex: /about/
     url(r'^about/', shakha_views.nagar_about, name='nagar_about'),
+# nagar_result is shows page that will only shows result
+    url(r'^result/', shakha_views.tarun_contact, name='nagar_result'),
+
     # ex: /shakha/5/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/$', shakha_views.index, name='index'),
     # ex: /shakha/5/swaymsevak/
