@@ -38,7 +38,7 @@ def nagar_about(request):
 			})
 def tarun_contact(request):
 	swaymsevak_list = Swaymsevak.objects.all()
-	swaymsevak_list_tarun=swaymsevak_list.filter(sshakha__swaymsevak_type='2').values("fname","mname","lname","spersonal__contact","spersonal__emailid")
+	swaymsevak_list_tarun=swaymsevak_list.values("fname","mname","lname","spersonal__contact","spersonal__emailid").exclude(spersonal__contact__exact='').exclude(spersonal__contact__isnull=True)
 	return render(request,'shakha/nagar_query.html',{'result':swaymsevak_list_tarun})
 
 
