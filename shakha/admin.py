@@ -70,10 +70,10 @@ class SwaymsevakAdmin(admin.ModelAdmin):
         return int(obj.sshakha.topi)+int(obj.sshakha.shirt)+int(obj.sshakha.pant)+int(obj.sshakha.shocks)+int(obj.sshakha.shoes)+int(obj.sshakha.dand)
     ganvesh_count.short_description = 'Ganvesh Part/6'
     ganvesh_count.admin_order_field = 'ganvesh_count'
-    ganvesh_count.admin_order_first_type = 'desc'
+    # ganvesh_count.admin_order_first_type = 'asc'
     list_display = ('__str__','shakha','swaymsevak_type','swaymsevak_society','ganvesh_count','swaymsevak_join_year','last_modified')
     search_fields = ['fname','lname']
-    list_filter = ['shakha','sshakha__swaymsevak_type']
+    list_filter = ['shakha','sshakha__swaymsevak_type','spersonal__basti']
     
 
 admin.site.register(Swaymsevak, SwaymsevakAdmin)

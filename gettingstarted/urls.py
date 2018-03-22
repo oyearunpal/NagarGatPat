@@ -19,36 +19,35 @@ from shakha import views as shakha_views
 from library import views as library_views
 from django.conf import settings
 from django.conf.urls.static import static
-admin.autodiscover()
 
+admin.autodiscover()
 
 app_name = 'shakha'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    
+
     # ex: /
     url(r'^$', shakha_views.home, name='home'),
     # ex: /about/
     url(r'^about/', shakha_views.nagar_about, name='nagar_about'),
-# nagar_result is shows page that will only shows result
+    # nagar_result is shows page that will only shows result
     url(r'^result/', shakha_views.tarun_contact, name='nagar_result'),
 
     # ex: /shakha/5/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/$', shakha_views.index, name='index'),
     # ex: /shakha/5/swaymsevak/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/swaymsevak/$', shakha_views.shakha_swaymsevak, name='shakha_swaymsevak'),
-        # ex: /shakha/5/ganvesh/
+    # ex: /shakha/5/ganvesh/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/ganvesh/$', shakha_views.shakha_ganvesh, name='shakha_ganvesh'),
-        # ex: /shakha/5/shikshit/
+    # ex: /shakha/5/shikshit/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/shikshit/$', shakha_views.shakha_shikshit, name='shakha_shikshit'),
-        # ex: /shakha/5/ghosh/
+    # ex: /shakha/5/ghosh/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/ghosh/$', shakha_views.shakha_ghosh, name='shakha_ghosh'),
-        # ex: /shakha/5/gat/
+    # ex: /shakha/5/gat/
     url(r'^shakha/(?P<shakha_id>[0-9]+)/gat/$', shakha_views.shakha_gat, name='shakha_gat'),
-        # ex: /shakha/5/sankhya/
+    # ex: /shakha/5/sankhya/
     # url(r'^shakha/(?P<shakha_id>[0-9]+)/sankhya/$', views.shakha_sankhya, name='shakha_sankhya'),
     url(r'^jholivachnalay/', library_views.jholivachnalay, name='jholivachnalay'),
-
 
     # ex: /swaymsevak/5/
     # url(r'^swaymsevak/(?P<shakha_id>[0-9]+)/$', views.swaymsevak_detail, name='swaymsevak_detail'),

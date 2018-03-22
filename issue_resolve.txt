@@ -1,0 +1,2 @@
+For running locally you need to change DEBUG=True in settings.py
+
