@@ -46,7 +46,7 @@ class GhoshAdmin(admin.ModelAdmin):
 admin.site.register(Ghosh, GhoshAdmin)
 
 
-#admin.site.register(Swaymsevak)
+# @admin.site.register(Swaymsevak)
 class SwaymsevakAdmin(admin.ModelAdmin):
     '''
         Admin View for Swaymsevak
@@ -59,22 +59,24 @@ class SwaymsevakAdmin(admin.ModelAdmin):
         return obj.sshakha.get_swaymsevak_type_display()
     swaymsevak_type.short_description = 'Type of Swaymsevak'
 
-    def swaymsevak_society(self,obj):
-        return obj.spersonal.society
-    swaymsevak_society.short_description = 'society'
+    def swaymsevak_basti(self, obj):
+        return obj.spersonal.get_basti_display()
+    swaymsevak_basti.short_description = 'Basti'
 
-    def swaymsevak_join_year(self,obj):
-        return obj.sshakha.join_Year
-    swaymsevak_join_year.short_description = 'join_year'
+    # def swaymsevak_join_year(self,obj):
+    #     return obj.sshakha.join_Year
+    # swaymsevak_join_year.short_description = 'Join_year'
     def ganvesh_count(self,obj):
-        return int(obj.sshakha.topi)+int(obj.sshakha.shirt)+int(obj.sshakha.pant)+int(obj.sshakha.shocks)+int(obj.sshakha.shoes)+int(obj.sshakha.dand)
-    ganvesh_count.short_description = 'Ganvesh Part/6'
-    ganvesh_count.admin_order_field = 'ganvesh_count'
-    ganvesh_count.admin_order_first_type = 'asc'
-
-    list_display = ('__str__','shakha','swaymsevak_type','swaymsevak_society','ganvesh_count','swaymsevak_join_year','last_modified')
+        return obj.sshakha.ganvesh_count
+    ganvesh_count.short_description = 'Ganvesh/6'
+    # ganvesh_count.admin_order_field = 'sshakha.ganvesh_count'
+    # ganvesh_count.admin_order_first_type = 'asc'
+    def contact_number(self,obj):
+        return obj.spersonal.contact
+    contact_number.short_description = 'Phone'
+    list_display = ('__str__','shakha','swaymsevak_type','swaymsevak_basti','ganvesh_count','contact_number','last_modified')
     search_fields = ['fname','lname']
-    list_filter = ['shakha','sshakha__swaymsevak_type','spersonal__basti']
+    list_filter = ['shakha','sshakha__swaymsevak_type','spersonal__basti','sshakha__ganvesh_count']
     
 
 admin.site.register(Swaymsevak, SwaymsevakAdmin)

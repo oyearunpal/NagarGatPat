@@ -156,28 +156,33 @@ class Sshakha(models.Model):
     shoes = models.BooleanField(choices=Bool_Choice, default=False)
     dand = models.BooleanField(choices=Bool_Choice, default=False)
     ganvesh_complete = models.BooleanField(choices=Bool_Choice, default=False)
-    ganvesh_count=models.PositiveSmallIntegerField("Ganvesh/6",default=0)
+    ganvesh_count = models.PositiveSmallIntegerField("Ganvesh/6", default=0)
     join_Year = models.PositiveSmallIntegerField("Year When You Join ", blank=True, null=True)
     Type_Choices = (
         ('1', 'Bal'),
-        ('2', 'Tarun'),
-        ('3', 'Shishu'),
+        ('2', 'Mahavidyalin Tarun'),
+        ('3', 'Vyvsayi Tarun'),
         ('4', 'Praudh')
     )
     swaymsevak_type = models.CharField(max_length=1, choices=Type_Choices, blank=True, null=True, default='1')
-
-    # def save(self, *args, **kwargs):
-    #     self.ganvesh_count=sum(int(self.topi),int(self.shirt),int(self.pant),int(self.belt),int(self.shocks),int(self.shoes),int(self.dand))
-    #     if self.ganvesh_count==6 or (self.ganvesh_count==5 and self.dand is False):
-    #         self.ganvesh_complete=True
-    #     else:
-    #         self.ganvesh_complete=False
-    #     super(self).save(*args, **kwargs)  # Call the "real" save() method.
 
     def sangh_aayu(self):
         if self.dob:
             today = date.today()
             return today.year - self.year
+
+    def save(self, *args, **kwargs):
+        self.ganvesh_count=(int(self.topi)+int(self.shirt)+int(self.pant)+int(self.belt)+int(self.shocks)+int(self.shoes)+int(self.dand))
+        if self.ganvesh_count==6:
+            self.ganvesh_complete=True
+        else:
+            self.ganvesh_complete=False
+        # age=self.sangh_aayu()
+        # if age is not None:
+        #     if age>16
+
+        super(Sshakha,self).save(*args, **kwargs)  # Call the "real" save() method.
+
 
     def __str__(self):
         return self.name.fname + " " + self.name.mname + " " + self.name.lname

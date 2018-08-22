@@ -40,6 +40,7 @@ def upload_csv(request, file_name):
 
 def nagar_about(request):
     shakha_swaymsevak_count = Shakha.objects.annotate(Count('swaymsevak'))
+    # shakha_basti_count = Spersonal.objects.values("basti").annotate(Count("name_id")) #Aggregation
     swaymsevak_list = Swaymsevak.objects.all()
     # shakha_list = Shakha.objects.all()
     today = date.today()
@@ -59,9 +60,12 @@ def nagar_about(request):
                                                       spersonal__dob__month=today.month)
 
     donut_value = []
-    for i in shakha_swaymsevak_count:
+    basti_list=Spersonal.objects.values('basti').distinct()
+    for i in basti_list:
+    # for i in shakha_basti_count:
         # a='{label:'+str(i.name)+',value:'+str(i.swaymsevak__count)+'}'
-        a = dict(value=str(i.swaymsevak__count), label=str(i.name))
+        q=Spersonal.objects.filter(basti=str(i['basti']))
+        a = dict(value=str(q.count()), label=str(q[0].get_basti_display()))
         donut_value.append(a)
 
     return render(request, 'shakha/nagar_about.html', {
@@ -84,9 +88,10 @@ def index(request, shakha_id):
     swaymsevak_count = Swaymsevak.objects.all().filter(shakha=shakha_id).count()
     purn_ganvesh_count = swaymsevak_list.filter(sshakha__ganvesh_complete=True).count()
     gat_swaymsevak_count = swaymsevak_list.exclude(sshakha__jimmedari='0').count()
-    tarun_count = swaymsevak_list.filter(sshakha__swaymsevak_type='2').count()
     bal_count = swaymsevak_list.filter(sshakha__swaymsevak_type='1').count()
-    shishu_count = swaymsevak_list.filter(sshakha__swaymsevak_type='3').count()
+    mahavidyalin_tarun_count = swaymsevak_list.filter(sshakha__swaymsevak_type='2').count()
+    vyasayi_tarun_count = swaymsevak_list.filter(sshakha__swaymsevak_type='3').count()
+    praudh_count = swaymsevak_list.filter(sshakha__swaymsevak_type='4').count()
     gat_count = Gat.objects.filter(gatnayak__shakha=shakha_id).count()
     sangh_shikshit = Sangh_Shikshan.objects.filter(name__shakha=shakha_id).count()
     shakha_toli = swaymsevak_list.exclude(sshakha__jimmedari='1').exclude(sshakha__jimmedari='0').exclude(
@@ -118,7 +123,7 @@ def index(request, shakha_id):
     #     donut_value.append(a)
 
     for i in list_basti:
-        a = dict(basti=str(i['basti']),
+        a = dict(basti=str(Spersonal.objects.filter(name__shakha=shakha_id).filter(basti=str(i['basti']))[0].get_basti_display()),
                  value=Spersonal.objects.filter(name__shakha=shakha_id).filter(basti=str(i['basti'])).count())
         value_ListSociety.append(a)
         donut_value.append(a)
@@ -149,7 +154,7 @@ def index(request, shakha_id):
         'purn_ganvesh_count': purn_ganvesh_count, 'swaymsevak_count': swaymsevak_count, 'gat_count': gat_count,
         'sangh_shikshit': sangh_shikshit, 'value_ListSociety': value_ListSociety,
         'donut_value': donut_value, 'birthday_next_10days': birthday_next_10days, 'shakha_toli': shakha_toli,
-        'bal_count': bal_count, 'tarun_count': tarun_count, 'shishu_count': shishu_count
+        'bal_count': bal_count, 'mahavidyalin_tarun_count': mahavidyalin_tarun_count, 'vyasayi_tarun_count': vyasayi_tarun_count,'praudh_count':praudh_count
     })
 
 
