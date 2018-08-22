@@ -43,10 +43,40 @@ For more information about using Python on Heroku, see these Dev Center articles
 
 - [Python on Heroku](https://devcenter.heroku.com/categories/python)
 
+--------------------------------------
+# How to Start this project
+1. source umamaheswar/bin/activate
+2. python managae.py runserver : to run locally
 
 
-Things to do:
-Check for image upload
-only shakha data has been loaded
-library data need to load
+# Deploy on heroku
+1.
 
+# Things to do:
+[] Check for image upload
+[] only shakha data has been loaded
+[] library data need to load
+[] Multiple update for single field
+[] Select multiple swaymsevak and copy/print there specific field.
+[] Remove duplicate.
+[] Warn for duplicate during insert new.
+[] Add basti wise list and its new page.
+[] Basti/Shakha/Ghosh/Gatnayak/Jimmedari wise export in pdf.
+[] Add email feature (~/Desktop/trash/gmail.py) and cronjob for birthday greetings.
+Issues
+1. Shows error on swaymsevak ganvesh count update.
+2. Basti number is there not there name. 
+
+# Tips
+1. https://github.com/kraiz/django-crontab for crontab in django
+
+
+# Authentication
+Heroku app
+oyearunpal@gmail.com
+1234@Heroku
+
+# Connecet db through terminal
+heroku pg:psql -a umamaheswar
+# DB backup
+https://devcenter.heroku.com/articles/heroku-postgres-backups

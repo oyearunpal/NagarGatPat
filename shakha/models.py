@@ -63,18 +63,16 @@ class Spersonal(models.Model):
         primary_key=True,
         default=1,
     )
-    Basti_Choice = (('1', 'Siddharth'),
-                    ('2', 'Satynagar'),
-                    ('3', 'Tanaji'),
-                    ('4', 'Krishna'),
-                    ('5', 'Ramjanki'),
-                    ('6', 'Umamaheswar'),
-                    ('7', 'Lalbahadur Shahstri'),
+    Basti_Choice = (('1', 'Satynagar'),
+                    ('2', 'Krishna'),
+                    ('3', 'Ramjanki'),
+                    ('4', 'Umamaheswar'),
+                    ('5', 'Lalbahadur Shahstri'),
+                    ('6', 'Shree Durga'),
+                    ('7', 'Netaji Nagar'),
                     ('8', 'Kajupada'),
-                    ('9', 'Netaji Nagar'),
-                    ('10', 'SunderBag Paschim'),
-                    ('11', 'SunderBag Purv'),
-
+                    ('9', 'SunderBag Paschim'),
+                    ('10', 'SunderBag Purv'),
                     )
 
     contact = models.CharField(max_length=10, blank=True, null=True)
@@ -145,6 +143,8 @@ class Sshakha(models.Model):
         ('9', 'Mukhy Shikshak'),
         ('10', 'Shakha Karyvah'),
         ('11', 'Palak'),
+        ('12', 'Nagar'),
+        ('13','Other')
     )
     jimmedari = models.CharField(max_length=2, choices=Jimmedari_Choices, default='1')
     gat = models.ForeignKey(Gat, on_delete=models.CASCADE, default=1)
@@ -156,6 +156,7 @@ class Sshakha(models.Model):
     shoes = models.BooleanField(choices=Bool_Choice, default=False)
     dand = models.BooleanField(choices=Bool_Choice, default=False)
     ganvesh_complete = models.BooleanField(choices=Bool_Choice, default=False)
+    ganvesh_count=models.PositiveSmallIntegerField("Ganvesh/6",default=0)
     join_Year = models.PositiveSmallIntegerField("Year When You Join ", blank=True, null=True)
     Type_Choices = (
         ('1', 'Bal'),
@@ -164,6 +165,14 @@ class Sshakha(models.Model):
         ('4', 'Praudh')
     )
     swaymsevak_type = models.CharField(max_length=1, choices=Type_Choices, blank=True, null=True, default='1')
+
+    # def save(self, *args, **kwargs):
+    #     self.ganvesh_count=sum(int(self.topi),int(self.shirt),int(self.pant),int(self.belt),int(self.shocks),int(self.shoes),int(self.dand))
+    #     if self.ganvesh_count==6 or (self.ganvesh_count==5 and self.dand is False):
+    #         self.ganvesh_complete=True
+    #     else:
+    #         self.ganvesh_complete=False
+    #     super(self).save(*args, **kwargs)  # Call the "real" save() method.
 
     def sangh_aayu(self):
         if self.dob:
