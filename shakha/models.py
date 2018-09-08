@@ -50,6 +50,13 @@ class Swaymsevak(models.Model):
     def __str__(self):
         return self.fname + " " + self.mname + " " + self.lname
 
+@python_2_unicode_compatible  # only if you need to support Python 2
+class  Basti(models.Model):
+    """
+    Description: Details of basti
+    """
+    name = models.CharField(max_length=30)
+
 
 @python_2_unicode_compatible  # only if you need to support Python 2
 class Spersonal(models.Model):

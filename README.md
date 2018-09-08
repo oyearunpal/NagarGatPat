@@ -1,82 +1,81 @@
-# python-getting-started
+# NagarGatPat
 
-A barebones Python app, which can easily be deployed to Heroku.
+[![](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
+NagarGatPat is a free open source web based project where you can add details of swaymsevaks of your Nagar. It is design for Nagar's daily usage.
 
-## Running Locally
+## Feautres
 
-Make sure you have Python [installed properly](http://install.python-guide.org).  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/) and [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
-
-```sh
-$ git clone git@github.com:heroku/python-getting-started.git
-$ cd python-getting-started
-
-$ pip install -r requirements.txt
-
-$ createdb python_getting_started
-
-$ python manage.py migrate
-$ python manage.py collectstatic
-
-$ heroku local
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-
-$ heroku run python manage.py migrate
-$ heroku open
-```
-or
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+1. You can add all details of swaymsevaks like, basti,shakha,emailID,Sangh Shiksha varg.
+2. Data can be filter based on Swaymsevak type(Bal,Tarun,Vyvasayi),basti,shakha etc.
+3. Also you can see graph of swaymsevak belongs to different shakha, basti etc.
+4. Lots of filter and sorting available there.
+5. It also shows birthday coming in 15days.
 
 ## Documentation
 
-For more information about using Python on Heroku, see these Dev Center articles:
 
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
+-
+## Installation
 
---------------------------------------
-# How to Start this project
-1. source umamaheswar/bin/activate
-2. python managae.py runserver : to run locally
+1) Install python 2.7 [https://www.python.org/downloads/release/python-2713/]
+2) Install postgresql
+3) Install pip [https://pip.pypa.io/en/stable/installing/]
+3) ```pip install -r requirements.txt```
+
+Download project 
+
+# Commands to setup the project
+1)Set up database configuration in Online_Retail>settings.py
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'name_of_db',
+        'USER': 'user_of_db',
+        'PASSWORD': 'pass_of_db',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+```
+
+2)Commands to set up project and run the development server
+```
+  python manage.py makemigrations
+  python manage.py migrate
+  //Create superuser
+  python manage.py createsuperuser
+  //run server
+  python manage.py runserver
+```
+
+## TODO
+
+1. Move from python 2.7 to python 3.0. And django 1.9 to 2.0.
+2. Import / Export in csv/xlsx format.
 
 
-# Deploy on heroku
-1.
+## Immediate TODO
+1. Pick nagar/basti names from file .
+2. Remove Jholivachnalaya.
 
-# Things to do:
-[] Check for image upload
-[] only shakha data has been loaded
-[] library data need to load
-[] Multiple update for single field
-[] Select multiple swaymsevak and copy/print there specific field.
-[] Remove duplicate.
-[] Warn for duplicate during insert new.
-[] Add basti wise list and its new page.
-[] Basti/Shakha/Ghosh/Gatnayak/Jimmedari wise export in pdf.
-[] Add email feature (~/Desktop/trash/gmail.py) and cronjob for birthday greetings.
-Issues
-1. Shows error on swaymsevak ganvesh count update.
-2. Basti number is there not there name. 
+## Contribute
 
-# Tips
-1. https://github.com/kraiz/django-crontab for crontab in django
+Any developers who wants to contribute please feel free to do your contribution.
+
+## Code of Conduct
+
+ - 
+
+## Connect with Developer
+
+Arun Pal
 
 
-# Authentication
-Heroku app
-oyearunpal@gmail.com
-1234@Heroku
+## License
 
-# Connecet db through terminal
-heroku pg:psql -a umamaheswar
-# DB backup
-https://devcenter.heroku.com/articles/heroku-postgres-backups
+
+

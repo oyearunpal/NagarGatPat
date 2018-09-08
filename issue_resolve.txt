@@ -1,8 +1,0 @@
-For running locally you need to change DEBUG=True in settings.py
-
-How to sync live db with local.
- heroku pg:backups:download -a umamaheswar => to downloads db backup
-psql -U postgres bikedb => To open db
-Remove the original db and now restore with backup
-pg_restore -U postgres -d bikedb  latest.dump.1 
-
